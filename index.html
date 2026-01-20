@@ -1,0 +1,1352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nanay's Sky Lake View - Mountain Top Tourist Destination</title>
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          line-height: 1.6;
+          color: #2d3436;
+      }
+
+      /* Header & Navigation */
+      header {
+          background: linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%);
+          color: white;
+          padding: 0.75rem 0;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 2rem;
+          position: relative;
+      }
+
+      .logo {
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: #a8d5ba;
+          white-space: nowrap;
+      }
+
+      .menu-toggle {
+          display: none;
+          background: none;
+          border: none;
+          color: white;
+          font-size: 1.5rem;
+          cursor: pointer;
+          padding: 0.5rem;
+          z-index: 101;
+      }
+
+      nav ul {
+          display: flex;
+          list-style: none;
+          gap: 2rem;
+      }
+
+      nav a {
+          color: white;
+          text-decoration: none;
+          transition: color 0.3s ease;
+          font-size: 0.95rem;
+      }
+
+      nav a:hover {
+          color: #a8d5ba;
+      }
+
+      /* Mobile Menu Styles */
+      @media (max-width: 768px) {
+          header {
+              padding: 0.5rem 0;
+          }
+
+          .navbar {
+              padding: 0 1rem;
+          }
+
+          .logo {
+              font-size: 1.2rem;
+              flex: 1;
+          }
+
+          .menu-toggle {
+              display: block;
+              margin-left: auto;
+          }
+
+          nav {
+              position: absolute;
+              top: 100%;
+              left: 0;
+              right: 0;
+              width: 100%;
+          }
+
+          nav ul {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              background: linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%);
+              flex-direction: column;
+              gap: 0;
+              padding: 1rem 0;
+              max-height: 0;
+              overflow: hidden;
+              transition: max-height 0.3s ease;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          }
+
+          nav ul.active {
+              max-height: 300px;
+          }
+
+          nav li {
+              padding: 0.75rem 2rem;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          }
+
+          nav li:last-child {
+              border-bottom: none;
+          }
+
+          nav a {
+              font-size: 1rem;
+              display: block;
+          }
+
+      /* Hero Section */
+      .hero {
+          height: 600px;
+          background: linear-gradient(rgba(45, 80, 22, 0.4), rgba(45, 80, 22, 0.4)), url('assets/imgs/472670694_122201650952213780_3614522567408961724_n.jpg');
+          background-size: cover;
+          background-position: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: white;
+          position: relative;
+      }
+
+      .hero-content h1 {
+          font-size: 3.5rem;
+          margin-bottom: 1rem;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      .hero-content p {
+          font-size: 1.5rem;
+          margin-bottom: 2rem;
+          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+      }
+
+      @media (max-width: 768px) {
+          .hero {
+              height: 400px;
+          }
+
+          .hero-content h1 {
+              font-size: 2rem;
+          }
+
+          .hero-content p {
+              font-size: 1rem;
+          }
+      }
+
+      .cta-button {
+          display: inline-block;
+          background: #8b7355;
+          color: white;
+          padding: 1rem 2.5rem;
+          text-decoration: none;
+          border-radius: 50px;
+          font-size: 1.1rem;
+          transition: background 0.3s ease, transform 0.3s ease;
+          border: none;
+          cursor: pointer;
+      }
+
+      .cta-button:hover {
+          background: #6b5344;
+          transform: translateY(-3px);
+      }
+
+      /* Gallery/Carousel Section */
+      .gallery-section {
+          padding: 4rem 2rem;
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+
+      .section-title {
+          text-align: center;
+          font-size: 2.5rem;
+          margin-bottom: 3rem;
+          color: #2d5016;
+      }
+
+      .carousel-container {
+          position: relative;
+          max-width: 900px;
+          margin: 0 auto;
+          background: #f5f3f0;
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: 0 8px 20px rgba(45, 80, 22, 0.15);
+      }
+
+      .carousel-slide {
+          display: none;
+          text-align: center;
+          padding: 3rem;
+          animation: fadeIn 0.5s ease-in;
+      }
+
+      .carousel-slide.active {
+          display: block;
+      }
+
+      @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+      }
+
+      .carousel-slide img {
+          max-width: 100%;
+          max-height: 400px;
+          border-radius: 10px;
+          margin-bottom: 1.5rem;
+          object-fit: cover;
+      }
+
+      .carousel-slide h3 {
+          font-size: 1.8rem;
+          margin-bottom: 0.5rem;
+          color: #2d5016;
+      }
+
+      .carousel-slide p {
+          font-size: 1rem;
+          color: #5a5a5a;
+          margin-bottom: 1rem;
+      }
+
+      .carousel-controls {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          padding: 1.5rem;
+          background: white;
+      }
+
+      .carousel-btn {
+          background: #7fa66f;
+          color: white;
+          border: none;
+          padding: 0.7rem 1.5rem;
+          border-radius: 50px;
+          cursor: pointer;
+          font-size: 1rem;
+          transition: background 0.3s ease;
+      }
+
+      .carousel-btn:hover {
+          background: #5f8050;
+      }
+
+      .carousel-dots {
+          display: flex;
+          gap: 0.5rem;
+      }
+
+      .dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #ccc;
+          cursor: pointer;
+          transition: background 0.3s ease;
+      }
+
+      .dot.active {
+          background: #7fa66f;
+      }
+
+      /* Gallery Grid Section */
+      .gallery-grid-section {
+          padding: 4rem 2rem;
+          background: #f9f7f4;
+      }
+
+      .gallery-grid-container {
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+
+      .gallery-carousel {
+          position: relative;
+          margin-top: 2rem;
+      }
+
+      .gallery-track {
+          display: flex;
+          gap: 1.5rem;
+          overflow: hidden;
+          border-radius: 10px;
+      }
+
+      .gallery-items-wrapper {
+          display: flex;
+          gap: 1.5rem;
+          transition: transform 0.5s ease;
+          width: 100%;
+      }
+
+      .gallery-item {
+          flex: 0 0 calc(33.333% - 1rem);
+          position: relative;
+          overflow: hidden;
+          border-radius: 10px;
+          aspect-ratio: 1 / 1;
+          cursor: pointer;
+          box-shadow: 0 4px 15px rgba(45, 80, 22, 0.1);
+          transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover {
+          transform: scale(1.05);
+      }
+
+      .gallery-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: filter 0.3s ease;
+      }
+
+      .gallery-item:hover img {
+          filter: brightness(0.8);
+      }
+
+      .gallery-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(45, 80, 22, 0.7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 2rem;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+      }
+
+      .gallery-item:hover .gallery-overlay {
+          opacity: 1;
+      }
+
+      .gallery-controls {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          padding: 1.5rem;
+          background: white;
+          border-radius: 0 0 10px 10px;
+      }
+
+      .gallery-btn {
+          background: #7fa66f;
+          color: white;
+          border: none;
+          padding: 0.7rem 1.5rem;
+          border-radius: 50px;
+          cursor: pointer;
+          font-size: 1rem;
+          transition: background 0.3s ease;
+      }
+
+      .gallery-btn:hover {
+          background: #5f8050;
+      }
+
+      /* Lightbox Styles */
+      .lightbox {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.9);
+          z-index: 200;
+          justify-content: center;
+          align-items: center;
+          padding: 2rem;
+      }
+
+      .lightbox.active {
+          display: flex;
+      }
+
+      .lightbox-content {
+          position: relative;
+          max-width: 90%;
+          max-height: 90%;
+      }
+
+      .lightbox-img {
+          max-width: 100%;
+          max-height: 80vh;
+          border-radius: 10px;
+      }
+
+      .lightbox-close {
+          position: absolute;
+          top: 20px;
+          right: 40px;
+          color: white;
+          font-size: 2.5rem;
+          cursor: pointer;
+          background: none;
+          border: none;
+          transition: color 0.3s ease;
+          z-index: 201;
+      }
+
+      .lightbox-close:hover {
+          color: #a8d5ba;
+      }
+
+      .lightbox-prev, .lightbox-next {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          color: white;
+          font-size: 2rem;
+          cursor: pointer;
+          background: rgba(0, 0, 0, 0.5);
+          border: none;
+          padding: 1rem 1.5rem;
+          border-radius: 5px;
+          transition: background 0.3s ease;
+      }
+
+      .lightbox-prev:hover, .lightbox-next:hover {
+          background: rgba(0, 0, 0, 0.8);
+      }
+
+      .lightbox-prev {
+          left: 20px;
+      }
+
+      .lightbox-next {
+          right: 20px;
+      }
+
+      @media (max-width: 1024px) {
+          .gallery-item {
+              flex: 0 0 calc(50% - 0.75rem);
+          }
+      }
+
+      @media (max-width: 768px) {
+          .gallery-item {
+              flex: 0 0 100%;
+          }
+
+          .lightbox-close {
+              top: 10px;
+              right: 20px;
+              font-size: 2rem;
+          }
+
+          .lightbox-prev, .lightbox-next {
+              padding: 0.75rem 1rem;
+              font-size: 1.5rem;
+          }
+      }
+      .about-section {
+          background: #f9f7f4;
+          padding: 4rem 2rem;
+      }
+
+      .about-container {
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+
+      .about-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 3rem;
+          align-items: center;
+      }
+
+      .about-text h2 {
+          font-size: 2rem;
+          margin-bottom: 1.5rem;
+          color: #2d5016;
+      }
+
+      .about-text p {
+          margin-bottom: 1rem;
+          color: #5a5a5a;
+          line-height: 1.8;
+      }
+
+      .about-image {
+          width: 100%;
+          height: 400px;
+          background: url('assets/imgs/613672465_122285105738213780_6320293408011140882_n.jpg');
+          background-size: cover;
+          background-position: center;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 4rem;
+      }
+
+      /* Services Section */
+      .services-section {
+          padding: 4rem 2rem;
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+
+      .services-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2rem;
+          margin-top: 2rem;
+      }
+
+      .service-card {
+          background: white;
+          padding: 2rem;
+          border-radius: 10px;
+          box-shadow: 0 4px 15px rgba(45, 80, 22, 0.1);
+          text-align: center;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .service-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 8px 25px rgba(45, 80, 22, 0.15);
+      }
+
+      .service-icon {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+      }
+
+      .service-card h3 {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          color: #2d5016;
+      }
+
+      .service-card p {
+          color: #5a5a5a;
+          line-height: 1.6;
+      }
+
+      /* Features Section */
+      .features-section {
+          background: linear-gradient(135deg, #8b9d6f 0%, #6b8659 100%);
+          color: white;
+          padding: 4rem 2rem;
+      }
+
+      .features-container {
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+
+      .features-section .section-title {
+          color: white;
+      }
+
+      .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+          margin-top: 2rem;
+      }
+
+      .feature-item {
+          background: rgba(255, 255, 255, 0.1);
+          padding: 2rem;
+          border-radius: 10px;
+          backdrop-filter: blur(10px);
+      }
+
+      .feature-item h3 {
+          font-size: 1.3rem;
+          margin-bottom: 1rem;
+      }
+
+      .feature-item p {
+          opacity: 0.95;
+      }
+
+      /* Footer */
+      footer {
+          background: #2d5016;
+          color: white;
+          text-align: center;
+          padding: 2rem;
+      }
+
+      footer p {
+          margin-bottom: 0.5rem;
+      }
+
+      /* Social Media Section */
+      .social-section {
+          background: #2d5016;
+          color: white;
+          padding: 3rem 2rem;
+          text-align: center;
+      }
+
+      .social-container {
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+
+      .social-section h2 {
+          font-size: 2rem;
+          margin-bottom: 2rem;
+          color: #a8d5ba;
+      }
+
+      .social-links {
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          flex-wrap: wrap;
+      }
+
+      .social-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 60px;
+          height: 60px;
+          background: #3d6b1f;
+          border-radius: 50%;
+          color: white;
+          text-decoration: none;
+          font-size: 1.8rem;
+          transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      .social-link:hover {
+          background: #7fa66f;
+          transform: translateY(-5px);
+      }
+
+      @media (max-width: 768px) {
+          .social-links {
+              gap: 1.5rem;
+          }
+
+          .social-link {
+              width: 50px;
+              height: 50px;
+              font-size: 1.5rem;
+          }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+          nav ul {
+              flex-direction: column;
+              gap: 1rem;
+          }
+
+          .hero-content h1 {
+              font-size: 2rem;
+          }
+
+          .hero-content p {
+              font-size: 1rem;
+          }
+
+          .about-content {
+              grid-template-columns: 1fr;
+          }
+
+          .carousel-slide {
+              padding: 1.5rem;
+          }
+
+          .carousel-slide img {
+              max-height: 250px;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="navbar">
+        <div class="logo">🏔️ Nanay's Sky Lake View</div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav>
+          <ul id="navMenu">
+            <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+            <li><a href="#features" onclick="toggleMenu()">Why Visit</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Welcome to Nanay's Sky Lake View</h1>
+        <p>Experience Paradise from the Mountain Top</p>
+        <button
+          class="cta-button"
+          onclick="
+            document
+              .getElementById('gallery')
+              .scrollIntoView({ behavior: 'smooth' })
+          "
+        >
+          Explore Gallery
+        </button>
+      </div>
+    </section>
+
+    <!-- Gallery/Carousel Section -->
+    <section id="gallery" class="gallery-section">
+      <h2 class="section-title">What Awaits You</h2>
+      <div class="carousel-container">
+        <div class="carousel-slide active">
+          <img
+            src="assets/imgs/550171254_122266176056213780_6700405872527376691_n.jpg"
+            alt="Mountain Views"
+          />
+          <h3>Breathtaking Mountain Views</h3>
+          <p>
+            Experience stunning panoramic views of the lake and surrounding
+            mountains. Perfect for photographers and nature lovers.
+          </p>
+        </div>
+
+        <div class="carousel-slide">
+          <img
+            src="assets/imgs/615327210_122285780606213780_5699430763752237096_n.jpg"
+            alt="Sunrise & Sunset"
+          />
+          <h3>Sunrise & Sunset Experiences</h3>
+          <p>
+            Witness the most magical moments of the day as the sun illuminates
+            the lake. Bring your loved ones for an unforgettable experience.
+          </p>
+        </div>
+
+        <div class="carousel-slide">
+          <img
+            src="assets/imgs/615429072_122285780432213780_8516241136023363685_n.jpg"
+            alt="Hiking Trails"
+          />
+          <h3>Hiking Trails</h3>
+          <p>
+            Explore scenic hiking trails with varying difficulty levels. Perfect
+            for adventure seekers and families looking for outdoor activities.
+          </p>
+        </div>
+
+        <div class="carousel-slide">
+          <img
+            src="assets/imgs/615705215_122286236810213780_5669195530084989487_n.jpg"
+            alt="Instagram-Worthy Spots"
+          />
+          <h3>Instagram-Worthy Spots</h3>
+          <p>
+            Discover beautiful locations perfect for capturing memorable
+            photographs and creating lasting memories with friends and family.
+          </p>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-btn" onclick="previousSlide()">
+            ← Previous
+          </button>
+          <div class="carousel-dots">
+            <span class="dot active" onclick="goToSlide(0)"></span>
+            <span class="dot" onclick="goToSlide(1)"></span>
+            <span class="dot" onclick="goToSlide(2)"></span>
+            <span class="dot" onclick="goToSlide(3)"></span>
+          </div>
+          <button class="carousel-btn" onclick="nextSlide()">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Grid Section -->
+    <section class="gallery-grid-section" id="all-gallery">
+      <div class="gallery-grid-container">
+        <h2 class="section-title">Gallery - Explore Our Paradise</h2>
+        <p
+          style="
+            text-align: center;
+            color: #5a5a5a;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+          "
+        >
+          Slide through photos of food, visitors, and our beautiful location
+        </p>
+        <div class="gallery-carousel">
+          <div class="gallery-track">
+            <div class="gallery-items-wrapper" id="galleryWrapper">
+              <div class="gallery-item" onclick="openLightbox(0)">
+                <img
+                  src="assets/imgs/472670694_122201650952213780_3614522567408961724_n.jpg"
+                  alt="Mountain View"
+                />
+                <div class="gallery-overlay">🏔️</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(1)">
+                <img
+                  src="assets/imgs/550171254_122266176056213780_6700405872527376691_n.jpg"
+                  alt="Lake Scenery"
+                />
+                <div class="gallery-overlay">💧</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(2)">
+                <img
+                  src="assets/imgs/613672465_122285105738213780_6320293408011140882_n.jpg"
+                  alt="Nature View"
+                />
+                <div class="gallery-overlay">🌿</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(3)">
+                <img
+                  src="assets/imgs/615327210_122285780606213780_5699430763752237096_n.jpg"
+                  alt="Scenic Beauty"
+                />
+                <div class="gallery-overlay">✨</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(4)">
+                <img
+                  src="assets/imgs/615429072_122285780432213780_8516241136023363685_n.jpg"
+                  alt="Nature Path"
+                />
+                <div class="gallery-overlay">🌲</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(5)">
+                <img
+                  src="assets/imgs/615705215_122286236810213780_5669195530084989487_n.jpg"
+                  alt="Vista"
+                />
+                <div class="gallery-overlay">👁️</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(6)">
+                <img
+                  src="assets/imgs/615787813_122286061940213780_1356114664374795056_n.jpg"
+                  alt="Beautiful Place"
+                />
+                <div class="gallery-overlay">🎨</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(7)">
+                <img
+                  src="assets/imgs/615825550_122286222068213780_652770363699700744_n.jpg"
+                  alt="Landscape"
+                />
+                <div class="gallery-overlay">🌄</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(8)">
+                <img
+                  src="assets/imgs/615832470_122286237344213780_7142104675319235368_n.jpg"
+                  alt="Views"
+                />
+                <div class="gallery-overlay">👀</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(9)">
+                <img
+                  src="assets/imgs/616041148_122286265034213780_279796247562937227_n.jpg"
+                  alt="Outdoor"
+                />
+                <div class="gallery-overlay">🏕️</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(10)">
+                <img
+                  src="assets/imgs/616097749_122286265136213780_756904048599263233_n.jpg"
+                  alt="Natural Wonder"
+                />
+                <div class="gallery-overlay">🌍</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(11)">
+                <img
+                  src="assets/imgs/616213763_122285779808213780_5049037723253604401_n.jpg"
+                  alt="Sky View"
+                />
+                <div class="gallery-overlay">☁️</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(12)">
+                <img
+                  src="assets/imgs/617086162_122286411638213780_4984486536534398514_n.jpg"
+                  alt="Place Beauty"
+                />
+                <div class="gallery-overlay">💎</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(13)">
+                <img
+                  src="assets/imgs/617200006_122286577238213780_6613179794741803461_n.jpg"
+                  alt="Visitors"
+                />
+                <div class="gallery-overlay">👥</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(14)">
+                <img
+                  src="assets/imgs/617265470_122286221924213780_3831621838772580885_n.jpg"
+                  alt="Experience"
+                />
+                <div class="gallery-overlay">🎯</div>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-controls">
+            <button class="gallery-btn" onclick="prevGallerySlide()">
+              ← Previous
+            </button>
+            <button class="gallery-btn" onclick="nextGallerySlide()">
+              Next →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" onclick="closeLightbox()">×</button>
+      <div class="lightbox-content">
+        <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+        <button class="lightbox-prev" onclick="prevImage()">❮</button>
+        <button class="lightbox-next" onclick="nextImage()">❯</button>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="about-container">
+        <h2 class="section-title">About Nanay's Sky Lake View</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Your Gateway to Mountain Serenity</h2>
+            <p>
+              Nestled at the summit of a majestic mountain, Nanay's Sky Lake
+              View offers visitors an unparalleled escape from the hustle and
+              bustle of everyday life.
+            </p>
+            <p>
+              Our destination showcases the raw beauty of nature with
+              breathtaking lake views, fresh mountain air, and tranquil
+              surroundings perfect for relaxation and adventure.
+            </p>
+            <p>
+              Whether you're seeking a peaceful retreat, an adrenaline-filled
+              adventure, or a romantic getaway, our mountain top paradise has
+              something for everyone.
+            </p>
+          </div>
+          <div class="about-image">🌌</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+      <h2 class="section-title">Services We Offer</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🍽️</div>
+          <h3>Dining</h3>
+          <p>
+            Enjoy delicious local and international cuisine at our mountain-top
+            restaurant with stunning lake views.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📸</div>
+          <h3>Photography</h3>
+          <p>
+            Capture breathtaking moments with professional photography
+            opportunities at scenic viewpoints designed for Instagram-worthy
+            shots.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏨</div>
+          <h3>Accommodation</h3>
+          <p>
+            Stay in our comfortable lodges and cottages with all modern
+            amenities and spectacular mountain views.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎊</div>
+          <h3>Adventure Activities</h3>
+          <p>
+            Experience thrilling activities including money hunt,
+            videoke/karaoke, and other exciting entertainment options for all
+            ages.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏞️</div>
+          <h3>Beautiful Scenery</h3>
+          <p>
+            Immerse yourself in pristine natural landscapes with panoramic lake
+            views and serene mountain surroundings perfect for relaxation.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎯</div>
+          <h3>Group Events</h3>
+          <p>
+            Host corporate retreats, family gatherings, and special celebrations
+            with customized packages and dedicated event support.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+      <div class="features-container">
+        <h2 class="section-title">Why Visit Nanay's Sky Lake View?</h2>
+        <div class="features-grid">
+          <div class="feature-item">
+            <h3>✨ Spectacular Views</h3>
+            <p>
+              Unobstructed panoramic views of pristine lakes and mountain ranges
+              that will take your breath away.
+            </p>
+          </div>
+          <div class="feature-item">
+            <h3>🌿 Nature's Sanctuary</h3>
+            <p>
+              Immerse yourself in pristine natural surroundings untouched by
+              urban development and pollution.
+            </p>
+          </div>
+          <div class="feature-item">
+            <h3>🤝 Friendly Community</h3>
+            <p>
+              Experience warm hospitality from local staff and meet fellow
+              travelers from around the world.
+            </p>
+          </div>
+          <div class="feature-item">
+            <h3>🎯 Accessibility</h3>
+            <p>
+              Well-maintained paths and facilities ensure visitors of all ages
+              and abilities can enjoy the mountain.
+            </p>
+          </div>
+          <div class="feature-item">
+            <h3>💰 Value for Money</h3>
+            <p>
+              Affordable packages and services offering exceptional value for an
+              unforgettable mountain experience.
+            </p>
+          </div>
+          <div class="feature-item">
+            <h3>🎊 Year-Round Destination</h3>
+            <p>
+              Each season offers unique beauty and activities, making every
+              visit a different and special experience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      style="padding: 4rem 2rem; background: #f9f7f4; text-align: center"
+    >
+      <h2 class="section-title">Plan Your Visit</h2>
+      <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #5a5a5a">
+        Ready to experience the magic of Nanay's Sky Lake View?
+      </p>
+      <button class="cta-button">Message Us</button>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+      <div class="social-container">
+        <h2>Follow Us On Social Media</h2>
+        <div class="social-links">
+          <a
+            href="https://www.facebook.com/nanayssky"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            title="Facebook"
+            >f</a
+          >
+          <a
+            href="https://www.instagram.com/nanayssky"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            title="Instagram"
+            >📷</a
+          >
+          <a
+            href="https://www.tiktok.com/@nanayssky"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            title="TikTok"
+            >🎵</a
+          >
+          <a
+            href="https://www.youtube.com/@nanayssky"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            title="YouTube"
+            >▶</a
+          >
+          <a
+            href="https://twitter.com/nanayssky"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            title="Twitter"
+            >𝕏</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 Nanay's Sky Lake View. All rights reserved.</p>
+      <p>📍 Mountain Summit | 📞 Contact Us | 📧 info@nanayssky.com</p>
+      <p>Experience nature. Embrace adventure. Create memories.</p>
+    </footer>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".carousel-slide");
+      const dots = document.querySelectorAll(".dot");
+
+      function showSlide(n) {
+        slides[currentSlide].classList.remove("active");
+        dots[currentSlide].classList.remove("active");
+
+        currentSlide = (n + slides.length) % slides.length;
+
+        slides[currentSlide].classList.add("active");
+        dots[currentSlide].classList.add("active");
+      }
+
+      function nextSlide() {
+        showSlide(currentSlide + 1);
+      }
+
+      function previousSlide() {
+        showSlide(currentSlide - 1);
+      }
+
+      function goToSlide(n) {
+        showSlide(n);
+      }
+
+      // Auto-advance carousel every 5 seconds
+      setInterval(nextSlide, 5000);
+
+      // Mobile menu toggle
+      function toggleMenu() {
+        const navMenu = document.getElementById("navMenu");
+        navMenu.classList.toggle("active");
+      }
+
+      // Close menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const navMenu = document.getElementById("navMenu");
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navbar = document.querySelector(".navbar");
+
+        if (!navbar.contains(event.target)) {
+          navMenu.classList.remove("active");
+        }
+      });
+
+      // Lightbox functionality
+      const galleryImages = [
+        "assets/imgs/472670694_122201650952213780_3614522567408961724_n.jpg",
+        "assets/imgs/550171254_122266176056213780_6700405872527376691_n.jpg",
+        "assets/imgs/613672465_122285105738213780_6320293408011140882_n.jpg",
+        "assets/imgs/615327210_122285780606213780_5699430763752237096_n.jpg",
+        "assets/imgs/615429072_122285780432213780_8516241136023363685_n.jpg",
+        "assets/imgs/615705215_122286236810213780_5669195530084989487_n.jpg",
+        "assets/imgs/615787813_122286061940213780_1356114664374795056_n.jpg",
+        "assets/imgs/615825550_122286222068213780_652770363699700744_n.jpg",
+        "assets/imgs/615832470_122286237344213780_7142104675319235368_n.jpg",
+        "assets/imgs/616041148_122286265034213780_279796247562937227_n.jpg",
+        "assets/imgs/616097749_122286265136213780_756904048599263233_n.jpg",
+        "assets/imgs/616213763_122285779808213780_5049037723253604401_n.jpg",
+        "assets/imgs/617086162_122286411638213780_4984486536534398514_n.jpg",
+        "assets/imgs/617200006_122286577238213780_6613179794741803461_n.jpg",
+        "assets/imgs/617265470_122286221924213780_3831621838772580885_n.jpg",
+      ];
+
+      let currentImageIndex = 0;
+
+      function openLightbox(index) {
+        currentImageIndex = index;
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightboxImg");
+        lightboxImg.src = galleryImages[currentImageIndex];
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        document.getElementById("lightboxImg").src =
+          galleryImages[currentImageIndex];
+      }
+
+      function prevImage() {
+        currentImageIndex =
+          (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+        document.getElementById("lightboxImg").src =
+          galleryImages[currentImageIndex];
+      }
+
+      // Gallery carousel position
+      let galleryPosition = 0;
+      const totalItems = 15;
+      let itemsPerView = 3;
+      let autoSlideInterval;
+
+      function getItemsPerView() {
+        if (window.innerWidth <= 768) {
+          return 1; // Mobile: 1 item
+        } else if (window.innerWidth <= 1024) {
+          return 2; // Tablet: 2 items
+        }
+        return 3; // Desktop: 3 items
+      }
+
+      function nextGallerySlide() {
+        const wrapper = document.getElementById("galleryWrapper");
+        itemsPerView = getItemsPerView();
+        const maxPosition = totalItems - itemsPerView;
+        galleryPosition = (galleryPosition + 1) % (maxPosition + 1);
+        updateGalleryPosition(wrapper);
+        resetAutoSlide();
+      }
+
+      function prevGallerySlide() {
+        const wrapper = document.getElementById("galleryWrapper");
+        itemsPerView = getItemsPerView();
+        const maxPosition = totalItems - itemsPerView;
+        galleryPosition =
+          (galleryPosition - 1 + (maxPosition + 1)) % (maxPosition + 1);
+        updateGalleryPosition(wrapper);
+        resetAutoSlide();
+      }
+
+      function updateGalleryPosition(wrapper) {
+        itemsPerView = getItemsPerView();
+        const translatePercentage = 100 / itemsPerView;
+        const translateValue = -(galleryPosition * translatePercentage);
+        wrapper.style.transform = `translateX(${translateValue}%)`;
+      }
+
+      function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+          const wrapper = document.getElementById("galleryWrapper");
+          itemsPerView = getItemsPerView();
+          const maxPosition = totalItems - itemsPerView;
+          galleryPosition = (galleryPosition + 1) % (maxPosition + 1);
+          updateGalleryPosition(wrapper);
+        }, 4000);
+      }
+
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+      }
+
+      // Handle window resize
+      window.addEventListener("resize", () => {
+        const wrapper = document.getElementById("galleryWrapper");
+        updateGalleryPosition(wrapper);
+      });
+
+      // Start auto-slide when page loads
+      window.addEventListener("load", startAutoSlide);
+
+      // Close lightbox when clicking outside the image
+      document
+        .getElementById("lightbox")
+        .addEventListener("click", function (event) {
+          if (event.target === this) {
+            closeLightbox();
+          }
+        });
+
+      // Keyboard navigation for lightbox
+      document.addEventListener("keydown", function (event) {
+        const lightbox = document.getElementById("lightbox");
+        if (lightbox.classList.contains("active")) {
+          if (event.key === "ArrowRight") nextImage();
+          if (event.key === "ArrowLeft") prevImage();
+          if (event.key === "Escape") closeLightbox();
+        }
+      });
+    </script>
+  </body>
+</html>
